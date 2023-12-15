@@ -1,55 +1,62 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable, useColorScheme } from 'react-native';
+import React from 'react'
+import {StyleSheet,View} from 'react-native'
+import { Tabs } from 'expo-router'
+import Colors from '@/constants/Colors'
 
-import Colors from '../../constants/Colors';
+// Icons
+import { FontAwesome, MaterialCommunityIcons, Ionicons } from '@expo/vector-icons'
 
-/**
- * You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
- */
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
-  color: string;
-}) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const _layout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
-          ),
-        }}
-      />
-      <Tabs.Screen
-        name="two"
-        options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-        }}
-      />
+    <Tabs screenOptions={{
+        tabBarActiveTintColor: Colors.deapOcean, 
+        tabBarInactiveTintColor: Colors.almostWhite,
+        tabBarShowLabel: false,
+        headerShown:false,
+        tabBarStyle:{
+            shadowOffset: { width: 0, height: -5 },
+            shadowColor: '#000',
+            shadowOpacity: 0.10,
+            borderWidth:0,
+        },
+    }}>
+        <Tabs.Screen name='home' options={{
+            tabBarIcon: ({color,size}) => 
+                <MaterialCommunityIcons name='home' color={color} size={size}/>
+        }}/>
+        <Tabs.Screen name='search' options={{
+            tabBarIcon: ({color,size}) => 
+                <Ionicons name='search' color={color} size={size}/>
+        }}/>
+        <Tabs.Screen name='post' options={{
+            tabBarIcon: ({color,size}) => 
+                <View style={styles.plusView}>
+                    <Ionicons name='add' color={color} size={size+10} style={{marginLeft:3}}/>
+                </View>
+        }}/>
+        <Tabs.Screen name='message' options={{
+            tabBarIcon: ({color,size}) => 
+                <FontAwesome name='comment' color={color} size={size}/>
+        }}/>
+        <Tabs.Screen name='account' options={{
+            tabBarIcon: ({color,size}) => 
+                <FontAwesome name='user' color={color} size={size}/>
+        }}/>
     </Tabs>
-  );
+  )
 }
+
+const styles = StyleSheet.create({
+    plusView:{
+        padding: 15,
+        backgroundColor: Colors.white,
+        position: 'absolute',
+        bottom:2,
+        borderRadius: 50,
+        shadowOffset: { width: 0, height: 4 },
+        shadowColor: '#000',
+        shadowOpacity: 0.10,
+    }
+})
+
+export default _layout
