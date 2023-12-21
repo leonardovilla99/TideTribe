@@ -36,7 +36,7 @@ const _layout = () => {
         }}/>
         <Tabs.Screen name='message' options={{
             tabBarIcon: ({color,size}) => 
-                <FontAwesome name='comment' color={color} size={size}/>
+                <FontAwesome name='comment' color={color} size={size-2}/>
         }}/>
         <Tabs.Screen name='account' options={{
             tabBarIcon: ({color,size}) => 
