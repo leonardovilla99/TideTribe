@@ -35,5 +35,34 @@ export default StyleSheet.create({
         shadowColor: '#000',
         shadowRadius:10,
         shadowOpacity:0.10,
+    },
+    textField:{
+        borderColor: Colors.almostWhite,
+        borderBottomWidth: 2,
+        paddingVertical: 5
+    },
+    botton:{
+        backgroundColor: Colors.sky,
+        borderRadius: 18,
+        marginVertical: 20,
+        padding: 15,
+        shadowOffset: { width: 0, height: 4 },
+        shadowColor: '#000',
+        shadowRadius:10,
+        shadowOpacity:0.10,
+    },
+    bottonText:{
+        color: Colors.white,
+        fontSize: 16,
+        textAlign: 'center'
+    },
+    lowView:{
+        position: 'fixed',
+        top: '75%',
+    },
+    textGrey:{
+        fontSize:12,
+        textAlign: 'center',
+        color: Colors.almostWhite
     }
 })
