@@ -82,6 +82,10 @@ function RootLayoutNav() {
             presentation: 'modal',
             headerShown: false
         }}/>
+        <Stack.Screen name="(modals)/register" options={{
+            presentation: 'modal',
+            headerShown: false
+        }}/>
         <Stack.Screen name="listing/[id]" options={{
             headerShown: false
         }}/>

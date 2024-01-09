@@ -58,7 +58,7 @@ export default StyleSheet.create({
     },
     lowView:{
         position: 'fixed',
-        top: '75%',
+        top: 200,
     },
     textGrey:{
         fontSize:12,
